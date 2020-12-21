@@ -33,3 +33,16 @@ npm i --save-dev node-sass@4 # create-react-app doesn't yet work with node-sass 
 npm i redux react-redux
 npm i @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 ```
+
+## troubleshooting
+
+### husky/prettier won't run on pre-commit
+
+If you are using NVM to manage your nodejs versions, you will need to inform husky to also use the version of node/npm installed by NVM. This problem has been encountered when committing using apps such as Webstorm.
+
+```bash
+echo '
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+' > ~/.huskyrc
+```
