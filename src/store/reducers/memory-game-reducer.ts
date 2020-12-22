@@ -1,17 +1,15 @@
-import { MemoryGameCard } from '../../memory-game/memory-game.interfaces';
+import { MemoryGameCardData } from '../../memory-game/memory-game.interfaces';
 import { getNewMemoryGameBoard } from '../../memory-game/memory-game.utilities';
 import {
   ACTION_FLIP_ALL_CARDS_DOWN,
   ACTION_FLIP_CARD_UP,
-  ACTION_INCREMENT_COUNTER,
-  ACTION_MARK_CARD_MATCHED,
   ACTION_NEW_MEMORY_GAME,
 } from '../actions';
 
 export interface MemoryGameState {
-  cards: MemoryGameCard[];
-  flippedCard1: MemoryGameCard | null;
-  flippedCard2: MemoryGameCard | null;
+  cards: MemoryGameCardData[];
+  flippedCard1: MemoryGameCardData | null;
+  flippedCard2: MemoryGameCardData | null;
 }
 
 const initialState: MemoryGameState = {
@@ -32,19 +30,41 @@ export const memoryGameReducer = (
         flippedCard2: null,
       };
     case ACTION_FLIP_CARD_UP:
-      // TODO
-      return {
-        ...state,
-      };
-    case ACTION_MARK_CARD_MATCHED:
-      // TODO
-      return {
-        ...state,
-      };
+      console.log(`flip card up`);
+      if (state.flippedCard1) {
+        // flip over the second card, and mark if matched with first
+
+        const newState = {
+          ...state,
+          flippedCard2: action.payload,
+        };
+
+        if (newState.flippedCard1?.symbol === newState.flippedCard2.symbol) {
+          newState.cards = newState.cards.map((it) => {
+            if (it.symbol === newState.flippedCard1?.symbol) {
+              return {
+                ...it,
+                isMatched: true,
+              };
+            } else {
+              return it;
+            }
+          });
+        }
+
+        return newState;
+      } else {
+        // flip over the first card
+        return {
+          ...state,
+          flippedCard1: action.payload,
+        };
+      }
     case ACTION_FLIP_ALL_CARDS_DOWN:
-      // TODO
       return {
         ...state,
+        flippedCard1: null,
+        flippedCard2: null,
       };
   }
 

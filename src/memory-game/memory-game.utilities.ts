@@ -3,23 +3,23 @@ import {
   memoryGameSymbols,
 } from './memory-game.constants';
 import { shuffleArray } from '../utilities/random-utils';
-import { MemoryGameCard } from './memory-game.interfaces';
+import { MemoryGameCardData } from './memory-game.interfaces';
 
 /**
  * Gets a shuffled set of cards for the memory game (2 cards per symbol)
  */
 export const getNewMemoryGameBoard = () => {
-  let cards: MemoryGameCard[] = [];
+  let cards: MemoryGameCardData[] = [];
   const symbols = getRandomMemoryGameSymbols();
 
   // for each symbol, generate 2 cards
   symbols.forEach((symbol) => {
-    const card1: MemoryGameCard = {
+    const card1: MemoryGameCardData = {
       symbol: symbol,
       isMatched: false,
       id: symbol + 1,
     };
-    const card2: MemoryGameCard = {
+    const card2: MemoryGameCardData = {
       symbol: symbol,
       isMatched: false,
       id: symbol + 2,

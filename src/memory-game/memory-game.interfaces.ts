@@ -1,4 +1,4 @@
-export interface MemoryGameCard {
+export interface MemoryGameCardData {
   id: string;
   symbol: string;
   isMatched: boolean;
