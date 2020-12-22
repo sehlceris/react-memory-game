@@ -1,20 +1,18 @@
-import { AppState } from './store.interfaces';
+import { combineReducers } from 'redux';
+import { counterReducer } from './reducers/counter-reducer';
 
-const initialState: AppState = {
-  counter: 0,
+// this ingenious type inference fix comes from: https://stackoverflow.com/a/64840112
+type BaseReducerMap<S> = {
+  [K in keyof S]: (state: S[K], action: any) => S;
 };
 
-export const rootReducer = (
-  state: AppState = initialState,
-  action: { type: string; payload: any }
-) => {
-  switch (action.type) {
-    case 'INCREMENT_COUNTER':
-      return {
-        ...state,
-        counter: state.counter + 1,
-      };
-  }
-
-  return state;
+export type InferRootState<ReducerMap extends BaseReducerMap<S>, S = any> = {
+  [K in keyof ReducerMap]: ReturnType<ReducerMap[K]>;
 };
+
+const reducersMap = {
+  counter: counterReducer,
+};
+
+export const rootReducer = combineReducers(reducersMap);
+export type AppState = InferRootState<typeof reducersMap>;

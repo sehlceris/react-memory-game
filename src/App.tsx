@@ -2,7 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
 import { connect, ConnectedProps } from 'react-redux';
-import { AppState } from './store/store.interfaces';
+import { ACTION_INCREMENT_COUNTER } from './store/actions';
+import { AppState } from './store/root-reducer';
 
 function App(props: Props) {
   return (
@@ -34,14 +35,14 @@ function App(props: Props) {
 
 const mapStateToProps = (state: AppState, ownProps: {}) => {
   return {
-    counter: state.counter,
+    counter: state.counter.value,
   };
 };
 
 const mapDispatchToProps = (dispatch: (action: any) => void) => {
   return {
     onIncrementCounter: () => {
-      dispatch({ type: 'INCREMENT_COUNTER' });
+      dispatch({ type: ACTION_INCREMENT_COUNTER });
     },
   };
 };
