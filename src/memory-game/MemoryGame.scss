@@ -1,0 +1,25 @@
+.MemoryGame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  .memory-game-board {
+    flex: 0 1 80vh;
+    display: grid;
+    grid-row-gap: 0.5em;
+    grid-column-gap: 0.5em;
+    align-items: stretch;
+    justify-content: stretch;
+
+    @media screen and (orientation: portrait) {
+      grid-template-columns: repeat(4, 25%);
+      grid-template-rows: repeat(6, 16%);
+    }
+
+    @media screen and (orientation: landscape) {
+      grid-template-columns: repeat(6, 16%);
+      grid-template-rows: repeat(4, 25%);
+    }
+  }
+}

@@ -36,6 +36,7 @@ function MemoryGame(props: Props) {
         card={card}
         key={card.id}
         isFlipped={isFlipped}
+        isCheating={false}
         onClick={() => handleCardClick(card)}
       />
     );
@@ -43,7 +44,10 @@ function MemoryGame(props: Props) {
 
   return (
     <div className="MemoryGame">
-      <button onClick={props.onNewGame}>New Game</button>
+      <div className="header">
+        <span>Memory Game</span>
+        <button onClick={props.onNewGame}>New Game</button>
+      </div>
       <div className="memory-game-board">{cards}</div>
     </div>
   );

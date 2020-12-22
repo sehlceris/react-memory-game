@@ -30,7 +30,6 @@ export const memoryGameReducer = (
         flippedCard2: null,
       };
     case ACTION_FLIP_CARD_UP:
-      console.log(`flip card up`);
       if (state.flippedCard1) {
         // flip over the second card, and mark if matched with first
 

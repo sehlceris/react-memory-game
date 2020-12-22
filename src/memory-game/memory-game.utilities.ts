@@ -39,6 +39,6 @@ export const getNewMemoryGameBoard = () => {
 export const getRandomMemoryGameSymbols = () => {
   let symbols = [...memoryGameSymbols];
   symbols = shuffleArray(symbols);
-  symbols = symbols.slice(0, MEMORY_GAME_SYMBOLS_COUNT - 1);
+  symbols = symbols.slice(0, MEMORY_GAME_SYMBOLS_COUNT);
   return symbols;
 };
