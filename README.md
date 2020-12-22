@@ -30,7 +30,7 @@ In case you need to create a similarly tooled app in the future, this is how the
 ```bash
 npx create-react-app react-memory-game --template typescript
 npm i --save-dev node-sass@4 # create-react-app doesn't yet work with node-sass 5+
-npm i redux react-redux
+npm i redux react-redux @types/react-redux
 npm i @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 ```
 

@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
+import { connect, ConnectedProps } from 'react-redux';
+import { AppState } from './store/store.interfaces';
 
-function App() {
+function App(props: Props) {
   return (
     <div className="App">
       <header className="App-header">
@@ -18,9 +20,34 @@ function App() {
         >
           Learn React
         </a>
+        <div>
+          <div className="counter">
+            <span>Counter Value:&nbsp;</span>
+            <span>{props.counter}</span>
+          </div>
+          <button onClick={props.onIncrementCounter}>Increment</button>
+        </div>
       </header>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state: AppState, ownProps: {}) => {
+  return {
+    counter: state.counter,
+  };
+};
+
+const mapDispatchToProps = (dispatch: (action: any) => void) => {
+  return {
+    onIncrementCounter: () => {
+      dispatch({ type: 'INCREMENT_COUNTER' });
+    },
+  };
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type Props = PropsFromRedux & {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
