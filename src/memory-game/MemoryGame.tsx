@@ -46,16 +46,18 @@ function MemoryGame(props: Props) {
   return (
     <div className="MemoryGame">
       <div className="header">
-        <span>Memory Game</span>
-        <label>
-          <span>Cheat</span>
+        <span className="title">Memory Game</span>
+        <label className="cheat-checkbox-label">
+          <span>Cheat&nbsp;</span>
           <input
             type="checkbox"
             onChange={() => props.onCheatToggle(!props.isCheating)}
             checked={props.isCheating}
           />
         </label>
-        <button onClick={props.onNewGame}>New Game</button>
+        <button className="new-game-button" onClick={props.onNewGame}>
+          New Game
+        </button>
       </div>
       <div className="memory-game-board">{cards}</div>
     </div>
