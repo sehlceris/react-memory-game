@@ -51,7 +51,7 @@ function MemoryGame(props: Props) {
           <span>Cheat</span>
           <input
             type="checkbox"
-            onClick={() => props.onCheatToggle(!props.isCheating)}
+            onChange={() => props.onCheatToggle(!props.isCheating)}
             checked={props.isCheating}
           />
         </label>
