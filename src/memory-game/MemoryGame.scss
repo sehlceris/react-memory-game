@@ -5,7 +5,7 @@
   align-items: stretch;
 
   .memory-game-board {
-    flex: 0 1 80vh;
+    flex: 1 1 80vh;
     display: grid;
     grid-row-gap: 0.5em;
     grid-column-gap: 0.5em;
@@ -13,13 +13,13 @@
     justify-content: stretch;
 
     @media screen and (orientation: portrait) {
-      grid-template-columns: repeat(4, 25%);
-      grid-template-rows: repeat(6, 16%);
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(6, 1fr);
     }
 
     @media screen and (orientation: landscape) {
-      grid-template-columns: repeat(6, 16%);
-      grid-template-rows: repeat(4, 25%);
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(4, 1fr);
     }
   }
 }

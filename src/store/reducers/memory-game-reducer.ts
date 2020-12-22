@@ -4,18 +4,21 @@ import {
   ACTION_FLIP_ALL_CARDS_DOWN,
   ACTION_FLIP_CARD_UP,
   ACTION_NEW_MEMORY_GAME,
+  ACTION_SET_CHEAT_MODE,
 } from '../actions';
 
 export interface MemoryGameState {
   cards: MemoryGameCardData[];
   flippedCard1: MemoryGameCardData | null;
   flippedCard2: MemoryGameCardData | null;
+  isCheating: boolean;
 }
 
 const initialState: MemoryGameState = {
   cards: getNewMemoryGameBoard(),
   flippedCard1: null,
   flippedCard2: null,
+  isCheating: false,
 };
 
 export const memoryGameReducer = (
@@ -28,6 +31,7 @@ export const memoryGameReducer = (
         cards: getNewMemoryGameBoard(),
         flippedCard1: null,
         flippedCard2: null,
+        isCheating: false,
       };
     case ACTION_FLIP_CARD_UP:
       if (state.flippedCard1) {
@@ -64,6 +68,11 @@ export const memoryGameReducer = (
         ...state,
         flippedCard1: null,
         flippedCard2: null,
+      };
+    case ACTION_SET_CHEAT_MODE:
+      return {
+        ...state,
+        isCheating: action.payload,
       };
   }
 

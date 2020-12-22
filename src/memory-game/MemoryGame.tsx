@@ -3,6 +3,7 @@ import {
   ACTION_NEW_MEMORY_GAME,
   ACTION_FLIP_CARD_UP,
   ACTION_FLIP_ALL_CARDS_DOWN,
+  ACTION_SET_CHEAT_MODE,
 } from '../store/actions';
 import { connect, ConnectedProps } from 'react-redux';
 import React from 'react';
@@ -36,7 +37,7 @@ function MemoryGame(props: Props) {
         card={card}
         key={card.id}
         isFlipped={isFlipped}
-        isCheating={false}
+        isCheating={props.isCheating}
         onClick={() => handleCardClick(card)}
       />
     );
@@ -46,6 +47,14 @@ function MemoryGame(props: Props) {
     <div className="MemoryGame">
       <div className="header">
         <span>Memory Game</span>
+        <label>
+          <span>Cheat</span>
+          <input
+            type="checkbox"
+            onClick={() => props.onCheatToggle(!props.isCheating)}
+            checked={props.isCheating}
+          />
+        </label>
         <button onClick={props.onNewGame}>New Game</button>
       </div>
       <div className="memory-game-board">{cards}</div>
@@ -69,6 +78,9 @@ const mapDispatchToProps = (dispatch: (action: any) => void) => {
     },
     onFlipCardsBackDown: () => {
       dispatch({ type: ACTION_FLIP_ALL_CARDS_DOWN });
+    },
+    onCheatToggle: (isCheating: boolean) => {
+      dispatch({ type: ACTION_SET_CHEAT_MODE, payload: isCheating });
     },
   };
 };
