@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { counterReducer } from './reducers/counter-reducer';
+import { memoryGameReducer } from './reducers/memory-game-reducer';
 
 // this ingenious type inference fix comes from: https://stackoverflow.com/a/64840112
 type BaseReducerMap<S> = {
@@ -12,6 +13,7 @@ export type InferRootState<ReducerMap extends BaseReducerMap<S>, S = any> = {
 
 const reducersMap = {
   counter: counterReducer,
+  memoryGame: memoryGameReducer,
 };
 
 export const rootReducer = combineReducers(reducersMap);
