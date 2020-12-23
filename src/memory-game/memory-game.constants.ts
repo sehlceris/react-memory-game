@@ -1,6 +1,7 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 
 export const MEMORY_GAME_SYMBOLS_COUNT = 12;
+export const MEMORY_GAME_CARDS_FACE_UP_TIME_MS = 1000;
 
 /*
   there are 12 pairs of cards in each game

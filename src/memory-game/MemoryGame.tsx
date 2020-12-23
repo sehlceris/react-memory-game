@@ -12,6 +12,7 @@ import { MemoryGameCardData } from './memory-game.interfaces';
 import './MemoryGame.scss';
 import MemoryGameCard from './MemoryGameCard';
 import Confetti from 'react-confetti';
+import { MEMORY_GAME_CARDS_FACE_UP_TIME_MS } from './memory-game.constants';
 
 function MemoryGame(props: Props) {
   const handleCardClick = (card: MemoryGameCardData) => {
@@ -25,7 +26,7 @@ function MemoryGame(props: Props) {
       if (props.flippedCard1) {
         setTimeout(() => {
           props.onFlipCardsBackDown();
-        }, 1000);
+        }, MEMORY_GAME_CARDS_FACE_UP_TIME_MS);
       }
     }
   };
