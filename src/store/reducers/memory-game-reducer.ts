@@ -12,6 +12,7 @@ export interface MemoryGameState {
   flippedCard1: MemoryGameCardData | null;
   flippedCard2: MemoryGameCardData | null;
   isCheating: boolean;
+  isWon: boolean;
 }
 
 const initialState: MemoryGameState = {
@@ -19,6 +20,7 @@ const initialState: MemoryGameState = {
   flippedCard1: null,
   flippedCard2: null,
   isCheating: false,
+  isWon: false,
 };
 
 export const memoryGameReducer = (
@@ -32,6 +34,7 @@ export const memoryGameReducer = (
         flippedCard1: null,
         flippedCard2: null,
         isCheating: false,
+        isWon: false,
       };
     case ACTION_FLIP_CARD_UP:
       if (state.flippedCard1) {
@@ -53,6 +56,10 @@ export const memoryGameReducer = (
               return it;
             }
           });
+        }
+
+        if (newState.cards.every((card) => card.isMatched)) {
+          newState.isWon = true;
         }
 
         return newState;

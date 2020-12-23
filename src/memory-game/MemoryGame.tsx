@@ -11,6 +11,7 @@ import { MemoryGameState } from '../store/reducers/memory-game-reducer';
 import { MemoryGameCardData } from './memory-game.interfaces';
 import './MemoryGame.scss';
 import MemoryGameCard from './MemoryGameCard';
+import Confetti from 'react-confetti';
 
 function MemoryGame(props: Props) {
   const handleCardClick = (card: MemoryGameCardData) => {
@@ -45,8 +46,11 @@ function MemoryGame(props: Props) {
 
   return (
     <div className="MemoryGame">
+      {props.isWon ? <Confetti /> : ''}
       <div className="header">
-        <span className="title">Memory Game</span>
+        <span className="title">
+          {props.isWon ? 'Victory!' : 'Memory Game'}
+        </span>
         <label className="cheat-checkbox-label">
           <span>Cheat&nbsp;</span>
           <input

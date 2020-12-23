@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import { connect, ConnectedProps } from 'react-redux';
 import { ACTION_INCREMENT_COUNTER } from './store/actions';
