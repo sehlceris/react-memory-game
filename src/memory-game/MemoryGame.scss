@@ -7,12 +7,12 @@
   margin: 1em;
 
   .header {
-    flex: 0 0 2em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     font-size: 2em;
+    font-size: 4vmin;
 
     .title {
     }
@@ -20,29 +20,30 @@
     .cheat-checkbox-label {
       display: flex;
       align-items: center;
+
+      input[type='checkbox'] {
+        width: 4vmin;
+        height: 4vmin;
+      }
     }
 
     .new-game-button {
+      font-size: 1em;
     }
   }
 
   .memory-game-board {
-    margin-top: 1em;
     flex: 1;
     display: grid;
-    grid-row-gap: 0.5em;
-    grid-column-gap: 0.5em;
-    align-items: stretch;
-    justify-content: stretch;
 
     @media screen and (orientation: portrait) {
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(6, calc(100% / 6));
+      grid-template-rows: repeat(6, 16.6%);
     }
 
     @media screen and (orientation: landscape) {
       grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(4, calc(100% / 4));
+      grid-template-rows: repeat(4, 25%);
     }
   }
 }

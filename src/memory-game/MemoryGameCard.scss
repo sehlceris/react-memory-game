@@ -21,9 +21,17 @@
 
 .MemoryGameCard {
   opacity: 1;
+  margin: 0.2em;
+
+  .card-back-logo {
+    transform: rotate(-35deg);
+    font-size: 2em;
+    font-size: 4vmin;
+  }
 
   .icon {
     font-size: 8em;
+    font-size: 12vmin;
   }
 
   .flip-card-side {
@@ -67,11 +75,11 @@
     backface-visibility: hidden;
   }
 
-  /* Style the front side (fallback if image is missing) */
+  /* Style the front side */
   .flip-card-front {
-    background-color: #bbb;
     color: black;
     transition: opacity 500ms ease-in;
+    background-color: #e18e53;
   }
 
   &.matched .flip-card-front {

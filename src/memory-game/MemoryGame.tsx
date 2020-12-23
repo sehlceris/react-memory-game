@@ -24,7 +24,7 @@ function MemoryGame(props: Props) {
       if (props.flippedCard1) {
         setTimeout(() => {
           props.onFlipCardsBackDown();
-        }, 1500);
+        }, 1000);
       }
     }
   };

@@ -27,9 +27,9 @@ function MemoryGameCard(props: Props) {
               ></FontAwesomeIcon>
             ) : (
               <div className="card-back-logo">
-                Memory
+                Flip
                 <br />
-                Game
+                Me
               </div>
             )}
           </div>
