@@ -6,8 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { rootReducer } from './store/root-reducer';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
+// initialize redux store
 const store = createStore(rootReducer);
+
+// initialize fontawesome
+library.add(fab);
 
 ReactDOM.render(
   <Provider store={store}>

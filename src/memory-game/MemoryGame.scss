@@ -1,0 +1,57 @@
+@import 'memory-card-game-constants';
+
+.MemoryGame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+  margin: 1em;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2em;
+    font-size: 4vmin;
+
+    .github {
+      a {
+        color: inherit;
+      }
+    }
+
+    .title {
+    }
+
+    .cheat-checkbox-label {
+      display: flex;
+      align-items: center;
+
+      input[type='checkbox'] {
+        width: 4vmin;
+        height: 4vmin;
+      }
+    }
+
+    .new-game-button {
+      font-size: 1em;
+    }
+  }
+
+  .memory-game-board {
+    flex: 1;
+    display: grid;
+
+    @media screen and (orientation: portrait) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(6, 16.6%);
+    }
+
+    @media screen and (orientation: landscape) {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(4, 25%);
+    }
+  }
+}

@@ -1,34 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import { connect, ConnectedProps } from 'react-redux';
 import { ACTION_INCREMENT_COUNTER } from './store/actions';
 import { AppState } from './store/root-reducer';
+import MemoryGame from './memory-game/MemoryGame';
 
 function App(props: Props) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <div>
-          <div className="counter">
-            <span>Counter Value:&nbsp;</span>
-            <span>{props.counter}</span>
-          </div>
-          <button onClick={props.onIncrementCounter}>Increment</button>
-        </div>
-      </header>
+      <MemoryGame></MemoryGame>
     </div>
   );
 }
