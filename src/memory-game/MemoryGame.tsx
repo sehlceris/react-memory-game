@@ -13,6 +13,7 @@ import './MemoryGame.scss';
 import MemoryGameCard from './MemoryGameCard';
 import Confetti from 'react-confetti';
 import { MEMORY_GAME_CARDS_FACE_UP_TIME_MS } from './memory-game.constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function MemoryGame(props: Props) {
   const handleCardClick = (card: MemoryGameCardData) => {
@@ -63,6 +64,14 @@ function MemoryGame(props: Props) {
         <button className="new-game-button" onClick={props.onNewGame}>
           New Game
         </button>
+        <span className="github">
+          <a
+            target="_blank"
+            href="https://github.com/sehlceris/react-memory-game"
+          >
+            <FontAwesomeIcon icon={['fab', 'github']} />
+          </a>
+        </span>
       </div>
       <div className="memory-game-board">{cards}</div>
     </div>
