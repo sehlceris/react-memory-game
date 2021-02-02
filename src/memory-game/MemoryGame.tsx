@@ -6,7 +6,7 @@ import {
   ACTION_SET_CHEAT_MODE,
 } from '../store/actions';
 import { connect, ConnectedProps } from 'react-redux';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MemoryGameState } from '../store/reducers/memory-game-reducer';
 import { MemoryGameCardData } from './memory-game.interfaces';
 import './MemoryGame.scss';
@@ -15,7 +15,23 @@ import Confetti from 'react-confetti';
 import { MEMORY_GAME_CARDS_FACE_UP_TIME_MS } from './memory-game.constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+interface MemoryGameComponentState {
+  flipDownTimeout: NodeJS.Timeout | null;
+}
+
 function MemoryGame(props: Props) {
+  const [state, setState] = useState<MemoryGameComponentState>({
+    flipDownTimeout: null,
+  });
+
+  useEffect(() => {
+    return () => {
+      if (state.flipDownTimeout) {
+        clearTimeout(state.flipDownTimeout);
+      }
+    };
+  }, []);
+
   const handleCardClick = (card: MemoryGameCardData) => {
     const canFlip =
       (!props.flippedCard1 || !props.flippedCard2) &&
@@ -25,9 +41,18 @@ function MemoryGame(props: Props) {
     if (canFlip) {
       props.onCardClick(card);
       if (props.flippedCard1) {
-        setTimeout(() => {
+        if (state.flipDownTimeout) {
+          clearTimeout(state.flipDownTimeout);
+        }
+        const newTimeout = setTimeout(() => {
           props.onFlipCardsBackDown();
         }, MEMORY_GAME_CARDS_FACE_UP_TIME_MS);
+        setState((previousState) => {
+          return {
+            ...previousState,
+            flipDownTimeout: newTimeout,
+          };
+        });
       }
     }
   };
