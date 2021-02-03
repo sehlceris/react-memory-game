@@ -5,7 +5,7 @@ import { ACTION_INCREMENT_COUNTER } from './store/actions';
 import { AppState } from './store/root-reducer';
 import MemoryGame from './components/pages/memory-game/MemoryGame';
 import DefaultLayout from './components/layouts/default-layout/DefaultLayout';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import About from './components/pages/about/About';
 
 function App(props: Props) {
@@ -14,8 +14,9 @@ function App(props: Props) {
       <div className="App">
         <DefaultLayout>
           <Switch>
-            <Route path="/" exact component={MemoryGame} />
             <Route path="/about" component={About} />
+            <Route path="/memory-game" exact component={MemoryGame} />
+            <Redirect from="/" to="/memory-game" />
           </Switch>
         </DefaultLayout>
       </div>

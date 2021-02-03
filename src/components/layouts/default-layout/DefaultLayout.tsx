@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './DefaultLayout.module.scss';
 import Header from '../../navigation/header/Header';
 import { AppState } from '../../../store/root-reducer';
@@ -17,7 +17,12 @@ interface DefaultLayoutComponentProps {
 }
 
 const DefaultLayout: React.FC<RouteComponentProps & Props> = (props) => {
+  const didMount = useRef(false);
   useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+      return;
+    }
     console.log(
       `[DefaultLayout] currentRoute`,
       props.navigationState.currentRoute

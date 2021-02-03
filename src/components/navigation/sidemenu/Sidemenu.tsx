@@ -12,7 +12,9 @@ const Sidemenu = (props: SidemenuComponentProps) => {
     <div className={`${styles.Sidemenu} ${props.isOpen ? styles.open : ''}`}>
       <div className={styles.backdrop} onClick={props.onBackdropClicked} />
       <ul className={styles.navigationLinks}>
-        <li onClick={() => props.onNavLinkSelected?.('/')}>Memory Game</li>
+        <li onClick={() => props.onNavLinkSelected?.('/memory-game')}>
+          Memory Game
+        </li>
         <li onClick={() => props.onNavLinkSelected?.('/about')}>About</li>
       </ul>
     </div>
