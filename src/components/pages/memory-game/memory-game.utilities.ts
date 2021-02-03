@@ -2,7 +2,7 @@ import {
   MEMORY_GAME_SYMBOLS_COUNT,
   memoryGameSymbols,
 } from './memory-game.constants';
-import { shuffleArray } from '../../utilities/random-utils';
+import { shuffleArray } from '../../../utilities/random-utils';
 import { MemoryGameCardData } from './memory-game.interfaces';
 
 /**

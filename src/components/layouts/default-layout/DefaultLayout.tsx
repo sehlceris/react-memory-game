@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './DefaultLayout.module.scss';
 import Header from '../../navigation/header/Header';
 import { AppState } from '../../../store/root-reducer';
@@ -10,13 +10,21 @@ import {
 } from '../../../store/actions';
 import { connect, ConnectedProps } from 'react-redux';
 import Sidemenu from '../../navigation/sidemenu/Sidemenu';
-import { NavigationState } from '../../../store/reducers/navigation-reducer';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 interface DefaultLayoutComponentProps {
   children: any;
 }
 
-const DefaultLayout = (props: Props) => {
+const DefaultLayout: React.FC<RouteComponentProps & Props> = (props) => {
+  useEffect(() => {
+    console.log(
+      `[DefaultLayout] currentRoute`,
+      props.navigationState.currentRoute
+    );
+    props.history.push(props.navigationState.currentRoute);
+  }, [props.navigationState.currentRoute]);
+
   return (
     <div className={styles.DefaultLayout}>
       <Header
@@ -65,4 +73,6 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & DefaultLayoutComponentProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(DefaultLayout);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(DefaultLayout)
+);

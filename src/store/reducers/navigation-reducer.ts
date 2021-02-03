@@ -24,6 +24,7 @@ export const navigationReducer = (
       return {
         ...state,
         currentRoute: action.payload,
+        isSidemenuOpen: false,
       };
     case ACTION_OPEN_SIDEMENU:
       return {

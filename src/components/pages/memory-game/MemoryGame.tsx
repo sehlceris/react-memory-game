@@ -1,19 +1,19 @@
-import { AppState } from '../../store/root-reducer';
+import { AppState } from '../../../store/root-reducer';
 import {
   ACTION_NEW_MEMORY_GAME,
   ACTION_FLIP_CARD_UP,
   ACTION_FLIP_ALL_CARDS_DOWN,
   ACTION_SET_CHEAT_MODE,
-} from '../../store/actions';
+} from '../../../store/actions';
 import { connect, ConnectedProps } from 'react-redux';
 import React from 'react';
-import { MemoryGameState } from '../../store/reducers/memory-game-reducer';
+import { MemoryGameState } from '../../../store/reducers/memory-game-reducer';
 import { MemoryGameCardData } from './memory-game.interfaces';
 import './MemoryGame.scss';
-import MemoryGameCard from './MemoryGameCard';
 import Confetti from 'react-confetti';
 import { MEMORY_GAME_CARDS_FACE_UP_TIME_MS } from './memory-game.constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import MemoryGameCard from './memory-game-card/MemoryGameCard';
 
 function MemoryGame(props: Props) {
   const handleCardClick = (card: MemoryGameCardData) => {

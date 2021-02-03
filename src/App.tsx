@@ -3,22 +3,27 @@ import './App.scss';
 import { connect, ConnectedProps } from 'react-redux';
 import { ACTION_INCREMENT_COUNTER } from './store/actions';
 import { AppState } from './store/root-reducer';
-import MemoryGame from './components/memory-game/MemoryGame';
+import MemoryGame from './components/pages/memory-game/MemoryGame';
 import DefaultLayout from './components/layouts/default-layout/DefaultLayout';
+import { BrowserRouter, Route } from 'react-router-dom';
+import About from './components/pages/about/About';
 
 function App(props: Props) {
   return (
-    <div className="App">
-      <DefaultLayout>
-        <MemoryGame></MemoryGame>
-      </DefaultLayout>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <DefaultLayout>
+          <Route path="/" exact component={MemoryGame} />
+          <Route path="/about" component={About} />
+        </DefaultLayout>
+      </div>
+    </BrowserRouter>
   );
 }
 
 const mapStateToProps = (state: AppState, ownProps: {}) => {
   return {
-    counter: state.counter.value,
+    navigationState: state.navigation,
   };
 };
 
