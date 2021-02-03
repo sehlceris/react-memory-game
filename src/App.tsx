@@ -3,12 +3,15 @@ import './App.scss';
 import { connect, ConnectedProps } from 'react-redux';
 import { ACTION_INCREMENT_COUNTER } from './store/actions';
 import { AppState } from './store/root-reducer';
-import MemoryGame from './memory-game/MemoryGame';
+import MemoryGame from './components/memory-game/MemoryGame';
+import DefaultLayout from './components/layouts/default-layout/DefaultLayout';
 
 function App(props: Props) {
   return (
     <div className="App">
-      <MemoryGame></MemoryGame>
+      <DefaultLayout>
+        <MemoryGame></MemoryGame>
+      </DefaultLayout>
     </div>
   );
 }

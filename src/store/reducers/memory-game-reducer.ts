@@ -1,5 +1,5 @@
-import { MemoryGameCardData } from '../../memory-game/memory-game.interfaces';
-import { getNewMemoryGameBoard } from '../../memory-game/memory-game.utilities';
+import { MemoryGameCardData } from '../../components/memory-game/memory-game.interfaces';
+import { getNewMemoryGameBoard } from '../../components/memory-game/memory-game.utilities';
 import {
   ACTION_FLIP_ALL_CARDS_DOWN,
   ACTION_FLIP_CARD_UP,
