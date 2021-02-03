@@ -8,7 +8,6 @@ import {
 import { connect, ConnectedProps } from 'react-redux';
 import { MemoryGameState } from '../../../store/reducers/memory-game-reducer';
 import React, { useEffect, useState } from 'react';
-import { MemoryGameState } from '../store/reducers/memory-game-reducer';
 import { MemoryGameCardData } from './memory-game.interfaces';
 import './MemoryGame.scss';
 import Confetti from 'react-confetti';
