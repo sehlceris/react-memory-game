@@ -1,5 +1,10 @@
 import React from 'react';
-import { NavLink, Route, RouteComponentProps } from 'react-router-dom';
+import {
+  NavLink,
+  Route,
+  RouteComponentProps,
+  withRouter,
+} from 'react-router-dom';
 import styles from './About.module.scss';
 import AboutNested from './about-nested/AboutNested';
 
@@ -22,4 +27,4 @@ const About: React.FC<RouteComponentProps> = (props) => {
   );
 };
 
-export default About;
+export default withRouter(About);

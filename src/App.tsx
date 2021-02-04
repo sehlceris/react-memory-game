@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.scss';
 import { connect, ConnectedProps } from 'react-redux';
 import { ACTION_INCREMENT_COUNTER } from './store/actions';
@@ -6,7 +6,9 @@ import { AppState } from './store/root-reducer';
 import MemoryGame from './components/pages/memory-game/MemoryGame';
 import DefaultLayout from './components/layouts/default-layout/DefaultLayout';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import About from './components/pages/about/About';
+
+// import About from './components/pages/about/About'; // lazily loaded instead
+const About = React.lazy(() => import('./components/pages/about/About'));
 
 function App(props: Props) {
   return (
@@ -14,7 +16,14 @@ function App(props: Props) {
       <div className="App">
         <DefaultLayout>
           <Switch>
-            <Route path="/about" component={About} />
+            <Route
+              path="/about"
+              render={() => (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <About />
+                </Suspense>
+              )}
+            />
             <Route path="/memory-game" exact component={MemoryGame} />
             <Redirect from="/" to="/memory-game" />
           </Switch>
